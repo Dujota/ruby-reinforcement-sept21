@@ -32,10 +32,43 @@ puts '-'*33
 
 # Create an empty array. Iterate through each train and add the name of the train into the array if it travels north.
 
+#we assign the variable to the function instead of creating a standalone empty array becuase the .select is pulling and array itself and retuns that into the variable
+north_trains = train_info.select do |train|
+  train[:direction] == "north"
+end
 
+puts north_trains
+puts '-'*33
+
+
+# Way #2
+#
+# if ever in doubt we can always use a .each{ |variable| instructions} for anything with an array
+
+north_arr = []
+ train_info.each { |train|
+   if train[:direction] == "north"
+     north_arr << train
+   end
+ }
+ puts north_arr
+
+puts '-'*33
 
 # Do the same thing for trains that travel east.
+east_trains = train_info.select { |train| train[:direction] == "east"}
+puts east_trains
+puts '-'*33
 
+# Way2
+east_arr = []
+train_info.each { |train|
+  if train[:direction] == "east"
+    east_arr << train
+  end
+}
+puts east_arr
+puts '-'*33
 
 # You probably just ended up rewriting some of the same code. Move this repeated code into a method that accepts a direction and a list of trains as arguments, and returns a list of just the trains that go in that direction. Call this method once for north and once for east in order to DRY up your code.
 
