@@ -82,7 +82,6 @@ puts '-'*33
 # You probably just ended up rewriting some of the same code. Move this repeated code into a method that accepts a direction and a list of trains as arguments, and returns a list of just the trains that go in that direction. Call this method once for north and once for east in order to DRY up your code.
 def train_direction(direction, list)
 # need to re-use the previous array iteration using .select but pass in the input variables of the list and direction which is string
-
   which_way = list.select {|train| train[:direction] == direction}
   puts which_way
 end
@@ -96,4 +95,37 @@ train_direction("south", train_info)
 puts
 train_direction("west", train_info)
 puts '-'*33
+
+
+# Other ways completed by classmates -- this solution uses the .include? and the .mnap function and needs an empty array to start off with
+
+
+# def group(array, direction)
+#   included = array.select { |item| item[:direction].include?(direction) }
+#   selected_trains = included.map { |item| item[:direction] }
+# end
+#
+# group(trains, "north")
+# group(trains, "east")
+
+#solution by Josh -- this uses the .each iteration that i was using as a second method and then adds an empty array, then the if loop shovels the value of |train| when it equals the direction that is inputted
+
+# def trains_direction(list_of_trains, direction)
+#   train_direction = []
+#   list_of_trains.each do |train|
+#     if train[:direction] == direction
+#       train_direction << train
+#     end
+#   end
+#   puts train_direction
+# end
+#
+# trains_direction(trains, "north")
+# trains_direction(trains, "east")
+
+
 # Pick one train and add another key/value pair for the first_departure_time. For simplicity, assume the first train always leave on the hour. You can represent this hour as an integer: 6 for 6:00am, 12 for noon, 13 for 1:00pm, etc.
+
+train_info[0][first_departure_time:] = 3
+puts '-'*33
+puts train_info[0]
