@@ -70,8 +70,30 @@ train_info.each { |train|
 puts east_arr
 puts '-'*33
 
+#did the same for west and south for practice
+south_trains = train_info.select {|train| train[:direction] == "south"}
+puts south_trains
+puts '-'*33
+
+west_trains = train_info.select { |train| train[:direction] == "west"  }
+puts west_trains
+puts '-'*33
+
 # You probably just ended up rewriting some of the same code. Move this repeated code into a method that accepts a direction and a list of trains as arguments, and returns a list of just the trains that go in that direction. Call this method once for north and once for east in order to DRY up your code.
+def train_direction(direction, list)
+# need to re-use the previous array iteration using .select but pass in the input variables of the list and direction which is string
+
+  which_way = list.select {|train| train[:direction] == direction}
+  puts which_way
+end
 
 
-
+train_direction("north", train_info)
+puts
+train_direction("east", train_info)
+puts
+train_direction("south", train_info)
+puts
+train_direction("west", train_info)
+puts '-'*33
 # Pick one train and add another key/value pair for the first_departure_time. For simplicity, assume the first train always leave on the hour. You can represent this hour as an integer: 6 for 6:00am, 12 for noon, 13 for 1:00pm, etc.
